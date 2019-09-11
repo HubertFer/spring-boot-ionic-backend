@@ -4,6 +4,10 @@ import java.io.Serializable;
 
 public class StandardError implements Serializable{
 
+	public class ValidationError {
+
+	}
+
 	private static final long serialVersionUID = 1L;
 	
 	private Integer status;
