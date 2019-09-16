@@ -47,7 +47,7 @@ public class CategoriaResources {
 		return ResponseEntity.created(uri).build();
 	}
 	
-	
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@RequestMapping(value="/{id}", method=RequestMethod.PUT)
 	public ResponseEntity<Void> update(@Valid @RequestBody CategoriaDTO objDto, @PathVariable Integer id){
 		Categoria obj = service.fromCategoriaDTO(objDto);
@@ -56,7 +56,7 @@ public class CategoriaResources {
 		return ResponseEntity.noContent().build();
 	}
 	
-	
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@RequestMapping(value="/{id}", method=RequestMethod.DELETE)
 	public ResponseEntity<Void> delete(@PathVariable Integer id) {
 		service.delete(id);
@@ -72,7 +72,7 @@ public class CategoriaResources {
 	}
 	
 	@RequestMapping(value="/page", method=RequestMethod.GET)
-	public ResponseEntity<Page<CategoriaDTO>> findaPage(
+	public ResponseEntity<Page<CategoriaDTO>> findPage(
 			@RequestParam(value="page", defaultValue="0") Integer page,
 			@RequestParam(value="linesPerPage", defaultValue="24")Integer linesPerPage,
 			@RequestParam(value="orderBy", defaultValue="nome")String orderBy,
