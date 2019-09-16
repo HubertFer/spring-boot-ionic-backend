@@ -67,5 +67,10 @@ public class UserSS implements UserDetails {
 	public boolean isEnabled() {
 		return true;
 	}
+	
+	//Verifica se o pefila é um tipo dentro da coleção GrantedAuthority
+	public boolean hasRole(Perfil perfil) {
+		return getAuthorities().contains(new SimpleGrantedAuthority(perfil.getDescricao()));
+	}
 
 }
